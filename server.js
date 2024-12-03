@@ -15,7 +15,7 @@ const app = express();
 // Add this before defining your routes
 app.use(
     cors({
-        origin: '*', // Allow requests from this origin
+        origin: 'https://form-xtocast.vercel.app', // Allow requests from this origin
         methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'], // Allowed methods
         allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
     })
