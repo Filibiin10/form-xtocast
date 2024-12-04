@@ -28,12 +28,12 @@ const submitForm = async (req, res) => {
 
   // Set up nodemailer
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587, // STARTTLS port
-  secure: false, // Use STARTTLS
+  host: 'smtp.gmail.com', // Correct Gmail SMTP server
+  port: 465, // SSL port
+  secure: true, // Use SSL for secure connection
   auth: {
-    user: 'filibiinfanax10@gmail.com',
-    pass: 'coku hzog ongi wwri',
+    user: 'filibiinfanax10@gmail.com', // Gmail address
+    pass: 'coku hzog ongi wwri', // App Password (not your regular password)
   },
 });
 
