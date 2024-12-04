@@ -15,7 +15,7 @@ const app = express();
 // Add this before defining your routes
 app.use(
   cors({
-    origin: 'https://xtocast-form.netlify.app/',  // Allow only this origin
+    origin: '*',  // Allow only this origin
     credentials: true, // Allow credentials (cookies, HTTP authentication)
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],  // Allowed methods
     allowedHeaders: ['Content-Type', 'Authorization'],  // Allowed headers
