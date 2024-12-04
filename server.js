@@ -23,8 +23,7 @@ app.use(
   })
 );
 
-// OR for a simple unrestricted setup (use carefully during development)
-app.use(cors());
+
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
 
