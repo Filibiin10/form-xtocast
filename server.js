@@ -14,12 +14,12 @@ const app = express();
 
 // Add this before defining your routes
 app.use(
-    cors({
-        origin: '*',
-        credentials: true, // Allow requests from this origin
-        methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'], // Allowed methods
-        allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-    })
+  cors({
+    origin: 'https://xtocas-form.netlify.app',  // Allow only this origin
+    credentials: true, // Allow credentials (cookies, HTTP authentication)
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],  // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'],  // Allowed headers
+  })
 );
 
 // OR for a simple unrestricted setup (use carefully during development)
