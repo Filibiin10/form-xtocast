@@ -28,15 +28,15 @@ const submitForm = async (req, res) => {
 
   // Set up nodemailer
   const transporter = nodemailer.createTransport({
-    host: 'r1.dnspark.in', // SMTP server
-    port: 465, // SSL port for SMTP
-    secure: true, // Use SSL (port 465 requires secure connection)
+    host: 'smtp.gmail.com', // Gmail SMTP server
+    port: 465, // SSL port
+    secure: true, // Use SSL for secure connection
     auth: {
-      user: 'no-reply@xtocast.com', // Your email address
-      pass: 'Collinsjoe@2004', // Your email account password
+      user: 'filibiinfanax10@gmail.com', // Gmail address
+      pass: 'coku hzog ongi wwri', // App Password (not your regular password)
     },
   });
-
+  
   const mailOptions = {
     from: 'no-reply@xtocast.com',
     to: formData.email,
@@ -46,7 +46,7 @@ const submitForm = async (req, res) => {
       <p><strong>First Name:</strong> ${formData.firstName}</p>
       <p><strong>Last Name:</strong> ${formData.lastName}</p>
       <p><strong>Shop/Brand Name:</strong> ${formData.shopName}</p>
-      <p><strong>Shop Category:</strong> ${formData.shopCategory}</p>
+      <p><strong>shopCategory:</strong> ${formData.shopCategory}</p>
       <p><strong>Constituency:</strong> ${formData.constituency}</p>
       <p><strong>Gender:</strong> ${formData.gender}</p>
       <p><strong>Previously Competed:</strong> ${formData.hasCompetedBefore}</p>
@@ -74,27 +74,17 @@ const submitForm = async (req, res) => {
       cid: `image_id_${index}`, // Ensure each image has a unique CID
     })),
   };
-
+  
+  
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully:", info); // Debugging email success
-    res.status(200).send({
-      message: "Form submitted successfully!",
-      debug: {
-        emailInfo: info,
-      },
-    });
+    res.status(200).send("Form submitted successfully!");
   } catch (error) {
-    console.error("Error sending email:", error); // Debugging error details
-    res.status(500).send({
-      message: "Error sending email",
-      debug: {
-        errorMessage: error.message,
-        errorStack: error.stack,
-      },
-    });
+    console.error("Error sending email:", error);
+    res.status(500).send("Error sending email");
   }
 };
+
 
    const getForms = async (req, res) => {
     try {
