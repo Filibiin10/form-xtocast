@@ -16,7 +16,7 @@ const app = express();
 // For handling requests with credentials (cookies, etc.)
 app.use(
   cors({
-    origin: 'https://form-xtocast.vercel.app', // Specify your frontend's domain
+    origin: '*', // Specify your frontend's domain
     credentials: true, // Allow credentials (cookies, Authorization headers, etc.)
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'], // Allowed methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
