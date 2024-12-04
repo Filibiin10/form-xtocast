@@ -27,15 +27,16 @@ const submitForm = async (req, res) => {
   console.log("Image Paths:", imagePaths);
 
   // Set up nodemailer
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com', // Gmail SMTP server
-    port: 465, // SSL port
-    secure: true, // Use SSL for secure connection
-    auth: {
-      user: 'filibiinfanax10@gmail.com', // Gmail address
-      pass: 'coku hzog ongi wwri', // App Password (not your regular password)
-    },
-  });
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587, // STARTTLS port
+  secure: false, // Use STARTTLS
+  auth: {
+    user: 'filibiinfanax10@gmail.com',
+    pass: 'coku hzog ongi wwri',
+  },
+});
+
   
   const mailOptions = {
     from: 'no-reply@xtocast.com',
