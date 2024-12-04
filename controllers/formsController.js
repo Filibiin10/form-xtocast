@@ -36,6 +36,7 @@ const submitForm = async (req, res) => {
       pass: 'Collinsjoe@2004', // Your email account password
     },
   });
+
   const mailOptions = {
     from: 'no-reply@xtocast.com',
     to: formData.email,
@@ -45,7 +46,7 @@ const submitForm = async (req, res) => {
       <p><strong>First Name:</strong> ${formData.firstName}</p>
       <p><strong>Last Name:</strong> ${formData.lastName}</p>
       <p><strong>Shop/Brand Name:</strong> ${formData.shopName}</p>
-      <p><strong>shopCategory:</strong> ${formData.shopCategory}</p>
+      <p><strong>Shop Category:</strong> ${formData.shopCategory}</p>
       <p><strong>Constituency:</strong> ${formData.constituency}</p>
       <p><strong>Gender:</strong> ${formData.gender}</p>
       <p><strong>Previously Competed:</strong> ${formData.hasCompetedBefore}</p>
@@ -73,17 +74,27 @@ const submitForm = async (req, res) => {
       cid: `image_id_${index}`, // Ensure each image has a unique CID
     })),
   };
-  
-  
+
   try {
     const info = await transporter.sendMail(mailOptions);
-    res.status(200).send("Form submitted successfully!");
+    console.log("Email sent successfully:", info); // Debugging email success
+    res.status(200).send({
+      message: "Form submitted successfully!",
+      debug: {
+        emailInfo: info,
+      },
+    });
   } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).send("Error sending email");
+    console.error("Error sending email:", error); // Debugging error details
+    res.status(500).send({
+      message: "Error sending email",
+      debug: {
+        errorMessage: error.message,
+        errorStack: error.stack,
+      },
+    });
   }
 };
-
 
    const getForms = async (req, res) => {
     try {
